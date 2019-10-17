@@ -1,0 +1,28 @@
+import React, { Component } from 'react'
+import { Drawer, Form, Button, Col, Row, Input, Select, DatePicker, Icon } from 'antd';
+import {store} from "../store";
+
+class EditCategory extends Component {
+    render() {
+        const { getFieldDecorator } = this.props.form;
+        return (
+
+            <Form onSubmit={() => (store.dispatch({type:'POST_CATEGORY'}))} layout="vertical" hideRequiredMark>
+                <Form.Item label="Developer">
+                    {getFieldDecorator('developer', {
+                        rules: [{ required: true, message: 'Please enter Developer' }],
+                    })(<Input placeholder="Developer" />)}
+                </Form.Item>
+                <Form.Item label="Description">
+                    {getFieldDecorator('description', {
+                        rules: [{ required: true, message: 'Please enter Description' }],
+                    })(
+                        <Input placeholder="Description" />)}
+                </Form.Item>
+            </Form>
+
+        )
+    }
+}
+
+export default EditCategory
