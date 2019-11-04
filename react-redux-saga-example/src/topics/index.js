@@ -28,8 +28,12 @@ class Topics extends Component {
         store.dispatch({type: actions.TOPICS, payload: this.props.userId})
     }
 
-    showComments = () => {
-        return this.props.history.push("/categories/topics/comment");
+    showComments = user => {
+        this.props.history.push("/categories/topics/comment");
+        // store.dispatch({type: actions.COMMENTS, payload: user});
+        // store.dispatch({type: actions.REVIEWS, payload: user});
+        // store.dispatch({type: actions.AVERAGE_RATING, user: user});
+        store.dispatch({type: actions.AUTHOR, author:user})
     };
 
     addTopics = () => {
@@ -52,9 +56,9 @@ class Topics extends Component {
         this.setState({ visible: false });
     };
 
-    handleDelete = (key,category) => {
-        console.log(category);
-        store.dispatch({type: actions.DELETE_TOPICS, payload:{key, category}})
+    handleDelete = (key,role) => {
+        console.log(role);
+        store.dispatch({type: actions.DELETE_TOPICS, payload:{key, role}})
     };
 
     category = (x) => {
@@ -62,7 +66,7 @@ class Topics extends Component {
     };
 
     topics = (x) => {
-        return ( { key:x.objectId, name:x.Name, age:x.Age, qualification:x.Qualification, experience:x.Experience, category:x.UserID })
+        return ( { key:x.objectId, name:x.Name, age:x.Age, qualification:x.Qualification, experience:x.Experience, desc:x.Topics })
     };
 
     render() {
@@ -71,17 +75,17 @@ class Topics extends Component {
 
         const columns = [
             {
-                title: 'Category',
-                dataIndex: 'category',
-                key: 'category',
-                width: '10%',
-            },
-            {
                 title: 'Name',
                 dataIndex: 'name',
                 key: 'name',
-                width: '20%',
-                render: (text, record) => <a onClick={() => this.showComments()}>{text}</a>,
+                width: '10%',
+                render: (text, record) => <a onClick={ () => this.showComments(record)}>{text}</a>,
+            },
+            {
+                title: 'Description',
+                dataIndex: 'desc',
+                key: 'desc',
+                width: '40%',
             },
             {
                 title: 'Age',
@@ -93,13 +97,13 @@ class Topics extends Component {
                 title: 'Qualification',
                 dataIndex: 'qualification',
                 key: 'qualification',
-                width: '20%',
+                width: '10%',
             },
             {
                 title: 'Experience',
                 dataIndex: 'experience',
                 key: 'experience',
-                width: '20%',
+                width: '10%',
             },
             {
                 title: 'Action',
@@ -109,7 +113,7 @@ class Topics extends Component {
                 render: (text, record) =>
                     <span>
                         <Button type="primary" className="topics-btn-size"><a onClick={() => this.editTopics(record.key)}> Edit </a></Button>
-                        <Button type="danger" className="topics-btn-size"><a onClick={() => this.handleDelete(record.key, record.category)}> Delete </a></Button>
+                        <Button type="danger" className="topics-btn-size"><a onClick={() => this.handleDelete(record.key, this.props.userId)}> Delete </a></Button>
                     </span>
             },
         ];
@@ -119,8 +123,8 @@ class Topics extends Component {
         return (
             <div>
                 <Router>
-                    <h2> Topics </h2>
-                    <Button type="primary" className="topics-btn-size"><a onClick={() => this.addTopics()}> Add Row </a></Button>
+                    <h2 className="margin"> Topics </h2>
+                    <Button className="margin" type="primary"><a onClick={() => this.addTopics()}> Add Row </a></Button>
 
                     { Topics &&
                         <Table columns={columns} dataSource={
@@ -150,7 +154,6 @@ class Topics extends Component {
                         <p>Comments</p>
                         <textarea  row="15"></textarea>
                     </Modal>
-
                 </Router>
             </div>
         )
@@ -158,10 +161,11 @@ class Topics extends Component {
 }
 
 const mapStateToProps = state => {
-    console.log(state.data.Topics);
+    console.log(state.data.UserId.data);
     return {
         topics: state.data.Topics,
-        userId: state.data.UserId.data.payload.key
+        userId: state.data.UserId.data,
+        role: state.data.Role.data.Role
     }
 };
 

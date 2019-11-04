@@ -1,25 +1,46 @@
 import React, { Component } from 'react'
-import { Tooltip } from 'antd';
+import {Table, Tooltip} from 'antd';
 import moment from 'moment';
+import {connect} from "react-redux";
+import {store} from "../store";
+import actions from "../constants";
 
 class Index extends Component {
+
+    componentDidMount(){
+        // store.dispatch({type: actions.CATEGORY})
+    }
+
+    comments = (x) =>
+        <div>
+            <div>{ x.Comments }</div>
+            <div>Posted by <span className="orange-color">{x.Username}</span></div>
+        </div>;
+
     render() {
+
+        const Comments = this.props.comments;
+
         return (
             <div className="post-container">
-                <div className="category">Category name</div>
-                <div className="title">Title</div>
-                <p>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-                </p>
-                <div className="float-left">
-                    <div className="float-left right-padding"> Posted by Mohan Kandhaiya </div>
-                    <Tooltip title={moment().format('YYYY-MM-DD HH:mm:ss')}>
-                        <span>{moment().fromNow()}</span>
-                    </Tooltip>
-                </div>
+                <div className="orange-color">{this.props.role}</div>
+                {/*<div className="title">Topics</div>*/}
+                { Comments &&
+                    Comments.data.data.map(this.comments)
+                }
             </div>
         )
     }
 }
 
-export default Index
+const mapStateToProps = state => {
+    console.log(state.data.Comments);
+    return {
+        topics: state.data.Topics,
+        userId: state.data.UserId.data,
+        role: state.data.Role.data.Role,
+        comments: state.data.Comments
+    }
+};
+
+export default connect(mapStateToProps)(Index)

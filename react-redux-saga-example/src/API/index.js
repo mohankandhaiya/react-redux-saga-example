@@ -61,15 +61,8 @@ export async function loginRequest(data){
         "password":data.password
     };
     return axios.post(`${BASE_URL}/users/login`, payload)
-        .then(function (response) {
-                console.log("Login successful");
-                console.log(response);
-                return response.status;
-        })
-        .catch(function (error) {
-            console.log(error);
-            return error;
-        });
+        .then(response => response)
+        .catch(error => error);
 }
 
 export async function signupRequest(data){
@@ -97,27 +90,45 @@ export async function editRequest(id,data){
 }
 
 export async function requestComments(payload){
-    console.log(payload);
+    console.log("Required " + payload);
     return axios.get(
-        `${BASE_URL}/data/Ratings_Comments?where=Username%3D%27Mohan%27`)
+        `${BASE_URL}/data/Topics?where=Name%3D%27${payload}%27`)
+        .then(response => response)
+        .catch(error => error);
+}
+
+export async function requestReviews(payload){
+    console.log("Required " + payload);
+    return axios.get(
+        `${BASE_URL}/data/Ratings?where=Author%3D%27${payload}%27`)
         .then(response => response)
         .catch(error => error);
 }
 
 export async function averageRating(payload){
     console.log(payload);
-    return axios.get(
-        // `${BASE_URL}/data/Ratings_Comments?props=Avg(Ratings)`
-        `${BASE_URL}/data/Ratings_Comments?props=Avg(Ratings)`)
+    return axios.get(`${BASE_URL}/data/Ratings?props=Avg(Stars)&where=Author%3D%27${payload}%27`)
         .then(response => response)
         .catch(error => error);
 }
 
 export async function totalRating(payload){
     console.log(payload);
-    return axios.get(
-        // `${BASE_URL}/data/Ratings_Comments?props=Avg(Ratings)`
-        `${BASE_URL}/data/Ratings_Comments?props=Count(Ratings)`)
+    return axios.get(`${BASE_URL}/data/Ratings?props=Count(Stars)`)
+        .then(response => response)
+        .catch(error => error);
+}
+
+export async function postComments(data){
+    console.log(data);
+    return axios.post( `${BASE_URL}/data/Ratings`, data)
+        .then(response => response)
+        .catch(error => error);
+}
+
+export async function postAuthor(data){
+    console.log(data);
+    return axios.post( `${BASE_URL}/data/Topics`, data)
         .then(response => response)
         .catch(error => error);
 }

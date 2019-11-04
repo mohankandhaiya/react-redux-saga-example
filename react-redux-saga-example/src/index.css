@@ -31,150 +31,118 @@ body{
   height: 650px;
 }
 
-/*footer{*/
-/*  display: inline;*/
-/*}*/
+footer{
+  display: inline;
+}
 
-/*.left{*/
-/*  margin: 10px;*/
-/*  float: left;*/
-/*}*/
+.left{
+  margin: 10px;
+  float: left;
+}
 
-/*.right{*/
-/*  float: right;*/
-/*}*/
+.right{
+  float: right;
+}
 
-/*button{*/
-/*  width: 425px;*/
-/*  background-color: royalblue;*/
-/*  color: #fff;*/
-/*  border: 0px;*/
-/*  padding: 10px;*/
-/*  font-family: Arial;*/
-/*  font-size: 18px;*/
-/*  margin: 10px 40px;*/
-/*}*/
+.email, .pass{
+  width: 400px;
+  padding: 10px;
+  font-family: Arial;
+  font-size: 14px;
+  margin: 5px 40px;
+}
 
-/*.email, .pass{*/
-/*  width: 400px;*/
-/*  padding: 10px;*/
-/*  font-family: Arial;*/
-/*  font-size: 14px;*/
-/*  margin: 5px 40px;*/
-/*}*/
+.text{
+  font-size: 14px;
+  margin: 5px 40px;
+}
 
-/*.text{*/
-/*  font-size: 14px;*/
-/*  margin: 5px 40px;*/
-/*}*/
+#welcome{
+  margin-top: 50px;
+  font-size: 18px;
+  text-align: center;
+}
 
-/*#welcome{*/
-/*  margin-top: 50px;*/
-/*  font-size: 18px;*/
-/*  text-align: center;*/
-/*}*/
+#desc, #or{
+  font-size: 14px;
+  text-align: center;
+}
 
-/*#desc, #or{*/
-/*  font-size: 14px;*/
-/*  text-align: center;*/
-/*}*/
+.note{
+  text-align: center;
+  font-size: 10px;
+  font-style: italic;
+  margin-top: 20px;
+}
 
-/*.note{*/
-/*  text-align: center;*/
-/*  font-size: 10px;*/
-/*  font-style: italic;*/
-/*  margin-top: 20px;*/
-/*}*/
+.first{
+  float: left;
+  width: 176px;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+  margin-right: 10px;
+}
 
-/*.first{*/
-/*  float: left;*/
-/*  width: 176px;*/
-/*  padding: 10px;*/
-/*  font-size: 14px;*/
-/*  margin-top: 5px;*/
-/*  margin-bottom: 10px;*/
-/*  margin-left: 40px;*/
-/*  margin-right: 10px;*/
-/*}*/
+.last{
+  float: left;
+  width: 176px;
+  padding: 10px;
+  font-size: 14px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  margin-right: 40px;
+  margin-left: 10px;
+}
 
-/*.last{*/
-/*  float: left;*/
-/*  width: 176px;*/
-/*  padding: 10px;*/
-/*  font-size: 14px;*/
-/*  margin-top: 5px;*/
-/*  margin-bottom: 10px;*/
-/*  margin-right: 40px;*/
-/*  margin-left: 10px;*/
-/*}*/
+.login-form {
+  max-width: 500px;
+}
 
-/*.editable-cell {*/
-/*  position: relative;*/
-/*}*/
+.login-form-forgot {
+  float: right;
+}
 
-/*.editable-cell-value-wrap {*/
-/*  padding: 5px 12px;*/
-/*  cursor: pointer;*/
-/*}*/
-
-/*.editable-row:hover .editable-cell-value-wrap {*/
-/*  border: 1px solid #d9d9d9;*/
-/*  border-radius: 4px;*/
-/*  padding: 4px 11px;*/
-/*}*/
-
-/*.editable-row .ant-form-explain {*/
-/*  position: absolute;*/
-/*  font-size: 12px;*/
-/*  margin-top: -4px;*/
-/*}*/
-
-/*.login-form {*/
-/*  max-width: 500px;*/
-/*}*/
-
-/*.login-form-forgot {*/
-/*  float: right;*/
-/*}*/
-
-/*.container, .container-register{*/
-/*  width: 400px;*/
-/*  height: 450px;*/
-/*  position: absolute;*/
-/*  top: 0;*/
-/*  bottom: 0;*/
-/*  left: 0;*/
-/*  right: 0;*/
-/*  margin: auto;*/
-/*  box-shadow: 0px 0px 10px #ccc;*/
-/*  padding: 30px 40px;*/
-/*}*/
+.container, .container-register{
+  width: 400px;
+  height: 450px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0px 0px 10px #ccc;
+  padding: 30px 40px;
+}
 
 /*.btn-size{*/
 /*  width: 100%;*/
 /*}*/
 
-/*.topics-btn-size{*/
-/*  width: 75px;*/
-/*}*/
+.topics-btn-size{
+  width: 75px;
+}
 
-/*.head{*/
-/*  text-align: center;*/
-/*  font-size: 18px;*/
-/*  color:  #59595A;*/
-/*  padding-bottom: 10px;*/
-/*}*/
+.head{
+  text-align: center;
+  font-size: 18px;
+  color:  #59595A;
+  padding-bottom: 10px;
+}
 
-/*.tagline{*/
-/*  text-align: center;*/
-/*  font-size: 14px;*/
-/*  color: #59595A;*/
-/*  padding-bottom: 10px;*/
-/*}*/
+.tagline{
+  text-align: center;
+  font-size: 14px;
+  color: #59595A;
+  padding-bottom: 10px;
+}
 
-/*.container-register{*/
-/*  height: 550px;*/
-/*}*/
+.container-register{
+  height: 550px;
+}
 
 .center{
   text-align: center;
@@ -191,8 +159,7 @@ textarea{
 
 .post-container, .rate-container, .review-container{
   width: auto;
-  height: 200px;
-  /*box-shadow: 0px 0px 10px #ccc;*/
+  min-height: 100px;
   padding: 10px;
   margin: 10px;
   border: 1px solid #eeeeee;
@@ -201,14 +168,6 @@ textarea{
 /*.right-padding{*/
 /*  padding-right: 5px;*/
 /*}*/
-
-.rate-container{
-  height: 105px;
-}
-
-.review-container{
-  height: 600px;
-}
 
 /*.category{*/
 /*  font-size: 12px;*/
@@ -230,56 +189,60 @@ textarea{
 /*  margin: 0px;*/
 /*}*/
 
-/*.size a{*/
-/*  font-size: 16px;*/
-/*  color: #40a9ff;*/
-/*}*/
+.font{
+  font-size: 16px;
+}
 
-/*.mid{*/
-/*  line-height: 20*/
-/*}*/
+.size a{
+  font-size: 16px;
+  color: #40a9ff;
+}
 
-/*.ant-row.ant-form-item{*/
-/*  margin-bottom: 5px;*/
-/*}*/
+.font-18{
+  font-size: 18px;
+}
 
-/*.ant-btn.ant-btn-primary{*/
-/*  margin: 10px 0;*/
-/*}*/
+.mid{
+  line-height: 20
+}
 
-/*.ant-divider.ant-divider-horizontal.ant-divider-with-text-center{*/
-/*  margin: 5px 0;*/
-/*}*/
+.ant-row.ant-form-item{
+  margin: 5px 10px 5px 10px;
+}
 
-/*.ant-col.ant-form-item-label{*/
-/*  line-height: 2;*/
-/*}*/
+.ant-divider.ant-divider-horizontal.ant-divider-with-text-center{
+  margin: 5px 0;
+}
 
-/*.ant-col.ant-form-item-label label{*/
-/*  font-size: 13px;*/
-/*}*/
+.ant-col.ant-form-item-label{
+  line-height: 2;
+}
 
-/*.ant-table-wrapper{*/
-/*  margin: 40px;*/
-/*}*/
+.ant-col.ant-form-item-label label{
+  font-size: 13px;
+}
 
-/*.ant-layout{*/
-/*  height: 100vh;*/
-/*}*/
+.ant-table-wrapper{
+  margin: 40px;
+}
 
-/*.custom-layout-header, .custom-layout-footer{*/
-/*  height: auto;*/
-/*  line-height: 1;*/
-/*  background-color: #ffffff;*/
-/*}*/
+.ant-layout{
+  height: 100vh;
+}
 
-/*.custom-layout-footer{*/
-/*  padding: 0 50px;*/
-/*}*/
+.custom-layout-header, .custom-layout-footer{
+  height: auto;
+  line-height: 1;
+  background-color: #ffffff;
+}
 
-/*.ant-layout-sider{*/
-/*  background-color: #ffffff;*/
-/*}*/
+.custom-layout-footer{
+  padding: 0 50px;
+}
+
+.ant-layout-sider{
+  background-color: #ffffff;
+}
 
 
 /*Comments Section*/
@@ -342,4 +305,44 @@ textarea{
 
 .margin-bottom{
   margin-bottom: 5px;
+}
+
+.bg-color{
+  background-color: dodgerblue;
+}
+
+.menu-bg-color{
+  background-color: lightblue;
+}
+
+.sider-height{
+  height: 100vh;
+}
+
+div.ant-comment-inner{
+  padding: 0px;
+}
+
+.ant-divider.ant-divider-horizontal{
+  margin: 15px 0px;
+}
+
+.border{
+  border-bottom: 1px solid #eeeeee;
+}
+
+.sm-size{
+  font-size: 12px;
+}
+
+.sm-margin-side{
+  margin: 0px 10px;
+}
+
+.margin-side{
+  margin: 0px 20px;
+}
+
+.margin{
+  margin: 10px 20px;
 }

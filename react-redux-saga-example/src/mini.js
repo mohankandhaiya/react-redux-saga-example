@@ -8,7 +8,7 @@ import moment from "moment";
 class Test extends React.Component{
 
     componentDidMount(){
-        store.dispatch({type: actions.COMMENTS});
+        // store.dispatch({type: actions.COMMENTS});
         store.dispatch({type: actions.AVERAGE_RATING});
     }
 
@@ -39,10 +39,9 @@ class Test extends React.Component{
 
             <div className="body-container">
                 <div className="center rate-container">
-                    { Ratings &&
-                       <div>{ Ratings.map(this.rating) }</div>
-                    }
-
+                    {/*{ Ratings &&*/}
+                    {/*   /!*<div>{ Ratings.map(this.rating) }</div>*!/*/}
+                    {/*}*/}
                 </div>
                 <div>
                     <h3 className="reviews-title"> Reviews </h3>
@@ -64,5 +63,3 @@ const mapStateToProps = state => {
 };
 
 export default connect(mapStateToProps)(Test);
-
-// export default Testing

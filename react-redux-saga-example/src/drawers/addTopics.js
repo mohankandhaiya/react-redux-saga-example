@@ -44,6 +44,7 @@ class AddTopicsDrawer extends Component {
                     "age": this.state.age,
                     "qualification": this.state.qualification,
                     "experience": this.state.experience,
+                    "topics": this.state.description,
                     "userid": this.props.userId
                 };
                 console.log(payload);
@@ -62,7 +63,7 @@ class AddTopicsDrawer extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { name, age, qualification, experience } = this.state;
+        const { name, age, qualification, experience, description } = this.state;
 
         return (
             <div>
@@ -76,7 +77,7 @@ class AddTopicsDrawer extends Component {
                         <Form.Item label="Name">
                             {getFieldDecorator('name', {
                                 rules: [{ required: true, message: 'Please enter Name' }],
-                            })(<Input placeholder="Name" name="name" value={name} onChange={this.changeHandler} />)}
+                            })(<Input  placeholder="Name" name="name" value={name} onChange={this.changeHandler} />)}
                         </Form.Item>
                         <Form.Item label="Age">
                             {getFieldDecorator('age', {
@@ -94,6 +95,12 @@ class AddTopicsDrawer extends Component {
                                 rules: [{ required: true, message: 'Please enter Experience' }],
                             })(
                                 <Input placeholder="Experience" name="experience" value={experience} onChange={this.changeHandler} />)}
+                        </Form.Item>
+                        <Form.Item label="Description">
+                            {getFieldDecorator('description', {
+                                rules: [{ required: true, message: 'Please enter Description' }],
+                            })(
+                                <Input placeholder="Description" name="description" value={description} onChange={this.changeHandler} />)}
                         </Form.Item>
                     </Form>
                     <div
@@ -125,7 +132,7 @@ const mapStateToProps = state => {
     console.log(state.data);
     return {
         topics: state.data.Topics,
-        userId: state.data.UserId.data.payload.key
+        userId: state.data.UserId.data
     }
 };
 

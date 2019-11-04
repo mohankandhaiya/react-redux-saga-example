@@ -2,7 +2,6 @@ import React, { Component, AutoCompleteOption, Option, residences } from 'react'
 import { BrowserRouter as Router, Route, Link, Switch, Redirect} from 'react-router-dom'
 import { Form, Input, Tooltip, Icon, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, Divider } from 'antd';
 import FormItem from 'antd/lib/form/FormItem';
-import axios from 'axios'
 // import { Form, Input } from 'antd';
 import { connect } from 'react-redux'
 
@@ -22,24 +21,6 @@ class Signup extends Component {
         this.setState({ [e.target.name]: e.target.value })
     };
 
-    submitHandler = e => {
-        e.preventDefault();
-        this.props.form.validateFields((err, values) => {
-            if (!err) {
-                console.log('Received values of form: ', values);
-            }
-        });
-        console.log(this.state);
-        axios
-            .post('https://api.backendless.com/8DE6548E-8BF3-6D86-FFD1-69A3FB236D00/CF3980EA-F0E0-187F-FF73-FE1EA86E8A00/users/register', this.state)
-            .then(response => {
-                console.log(response)
-            })
-            .catch(error => {
-                console.log(error)
-            })
-    };
-
     handleSubmit = e => {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
@@ -49,6 +30,7 @@ class Signup extends Component {
                 console.log(payload);
                 const { dispatch } = this.props;
                 dispatch({type: 'REQUEST_SIGNUP', payload: {payload}});
+                this.props.history.push("/login")
             }
         });
     };
@@ -61,7 +43,7 @@ class Signup extends Component {
             <div className="container-register">
                 <div className="head">REGISTER NOW</div>
                 <div className="tagline">Join a growing community</div>
-                <Form onSubmit={this.submitHandler} className="login-form" hideRequiredMark>
+                <Form onSubmit={this.handleSubmit} className="login-form" hideRequiredMark>
                     <Row gutter={16}>
                         <Col span={12}>
                             <Form.Item label="FIRSTNAME">
@@ -138,13 +120,6 @@ class Signup extends Component {
 }
 
 const SignUpForm = Form.create({ name: 'signup' })(Signup);
-
-// const mapStateToProps = state => {
-//     console.log(state);
-//     return {
-//         redirect: state.category.Signup
-//     }
-// };
 
 const mapStateToProps = state => {
     console.log(state);

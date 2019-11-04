@@ -13,8 +13,11 @@ import Testing from "./testing";
 import CategoryCard from "./card";
 import AddTopics from "./drawers/addTopics";
 import EditTopics from "./drawers/editTopics";
-import CommentPage from "./commentpage/comments";
-import Text from "./mini"
+import CommentPage from "./commentpage";
+import Test from "./mini"
+import Modals from "./modal";
+import Demo from "./modal/min";
+import SearchInput from "./search";
 
 // const fakeAuth = {
 //     isAuthenticated: false,
@@ -50,27 +53,24 @@ class App extends Component {
 
     render() {
         return (
-
             <BrowserRouter>
                 <Switch>
                     {/*<Route exact path="/" render={ props => (<Categories {...props} loggedInStatus={this.state.loggedInStatus} />)} />*/}
-                    <Route exact path="/login"  component={LoginForm} />
+                    <Route exact path="/login" component={LoginForm} />
                     <Route exact path="/signup" component={SignUpForm} />
                     <Route exact path="/categories" component={Categories} />
                     <Route exact path="/categories/topics" component={Topics} />
                     <Route exact path="/categories/topics/add" component={AddTopics} />
                     <Route exact path="/categories/topics/edit" component={EditTopics} />
                     <Route exact path="/categories/edit" component={CategoryTable} />
-                    <Route exact path="/categories/topics/comment" component={Index} />
+                    <Route exact path="/categories/topics/comment" component={CommentPage} />
+                    <Route exact path="/categories/topics/comment/rate" component={Modals} />
                     {/*<Route exact path="/error/" component={PageNotFound} />*/}
                     {/*<Redirect />*/}
                     {/*<Redirect from='*' to='/error' />*/}
-                    {/*<Navbar />*/}
-                    {/*<Testing />*/}
-                    {/*<CommentPage />*/}
-                    {/*<Topics />*/}
-                    {/*<CategoryCard />*/}
-                    <Text />
+                    <Navbar />
+                    {/*<Test />*/}
+                    <SearchInput placeholder="input search text" style={{ width: 200 }} />
                 </Switch>
             </BrowserRouter>
         )

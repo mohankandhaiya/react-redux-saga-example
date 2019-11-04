@@ -6,11 +6,7 @@ class Review extends Component {
     render() {
         return (
             <div className="review-container">
-                <div>Review</div>
-                <Divider />
-                <Comments />
-                <Divider />
-                <Comments />
+                <div className="font">Review</div>
                 <Divider />
                 <Comments />
             </div>

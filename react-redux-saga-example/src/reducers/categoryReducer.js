@@ -26,6 +26,9 @@ const categoryReducer = (state = {}, action) => {
         case actions.LOGIN_SUCCESS: {
             return { ...state, Login: action.data };
         }
+        case actions.LOGIN_USER_SUCCESS: {
+            return { ...state, User: action };
+        }
         case actions.TEST_SUCCESS: {
             return { ...state, Topics: action };
         }
@@ -35,14 +38,27 @@ const categoryReducer = (state = {}, action) => {
         case actions.OBJECT_ID_SUCCESS: {
             return { ...state, ObjectId: action };
         }
+        case actions.ROLE_SUCCESS: {
+            return { ...state, Role: action };
+        }
         case actions.AVERAGE_RATING_SUCCESS: {
             return { ...state, AverageRatings: action };
+        }
+        case actions.TOTAL_RATING_SUCCESS: {
+            return { ...state, TotalRatings: action };
         }
         case actions.COMMENTS_SUCCESS: {
             return { ...state, Comments: action };
         }
-        default:
+        case actions.REVIEWS_SUCCESS: {
+            return { ...state, Reviews: action };
+        }
+        case actions.AUTHOR_SUCCESS: {
+            return { ...state, Author: action };
+        }
+        default: {
             return state;
+        }
     }
 };
 

@@ -49,7 +49,7 @@ class Login extends React.Component {
                 dispatch({type: 'REQUEST_LOGIN', payload: {payload}});
                 setTimeout(
                     function() {
-                        if(this.props.redirect === 200){
+                        if(this.props.redirect.status === 200){
                             console.log(this.props.history);
                             return this.props.history.push('/categories/');
                         }
@@ -121,7 +121,7 @@ class Login extends React.Component {
 const LoginForm = Form.create({ name: 'login' })(Login);
 
 const mapStateToProps = state => {
-    console.log(state);
+    console.log(state.data.Login);
     return {
         redirect: state.data.Login
     }

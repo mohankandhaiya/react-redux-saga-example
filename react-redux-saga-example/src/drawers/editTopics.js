@@ -48,6 +48,7 @@ class EditTopicsDrawer extends Component {
                     "age": this.state.age,
                     "qualification": this.state.qualification,
                     "experience": this.state.experience,
+                    "topics": this.state.description,
                     "userid": this.props.userId
                 };
                 const objectId = {
@@ -67,7 +68,7 @@ class EditTopicsDrawer extends Component {
 
     render() {
         const { getFieldDecorator } = this.props.form;
-        const { name, age, qualification, experience } = this.state;
+        const { name, age, qualification, experience, description } = this.state;
 
         return (
             <div>
@@ -100,6 +101,12 @@ class EditTopicsDrawer extends Component {
                             })(
                                 <Input placeholder="Experience" name="experience" setFieldValue={experience} onChange={this.changeHandler} />)}
                         </Form.Item>
+                        <Form.Item label="Description">
+                            {getFieldDecorator('description', {
+                                rules: [{ required: true, message: 'Please enter Description' }],
+                            })(
+                                <Input placeholder="Description" name="description" setFieldValue={description} onChange={this.changeHandler} />)}
+                        </Form.Item>
                     </Form>
                     <div
                         style={{
@@ -130,7 +137,7 @@ const mapStateToProps = state => {
     console.log(state.data);
     return {
         topics: state.data.Topics,
-        userId: state.data.UserId.data.payload.key,
+        userId: state.data.UserId.data,
         objectId: state.data.ObjectId.data.payload.key
     }
 };

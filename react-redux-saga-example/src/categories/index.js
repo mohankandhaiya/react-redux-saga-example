@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux";
-import { Button, Table, Modal } from 'antd'
+import { Button, Table, Modal, Layout, Menu } from 'antd'
 import {store} from "../store";
 import { BrowserRouter } from "react-router-dom";
 import Ratings from "../Ratings";
 import actions from "../constants";
+
+const { Sider } = Layout;
+const { SubMenu } = Menu;
 
 class Categories extends Component {
 
@@ -31,6 +34,12 @@ class Categories extends Component {
         return ( { key:x.objectId, role:x.Developer, desc:x.Description, obj:x.UserId })
     };
 
+    menuCategory = (x) =>
+        <Menu.Item key={x.UserId} onClick={ (key) => this.handleTopics(key) }>
+             {x.Developer}
+        </Menu.Item>;
+
+
     handleOk = () => {
         this.setState({ loading: true });
         setTimeout(() => {
@@ -42,11 +51,11 @@ class Categories extends Component {
         this.setState({ visible: false });
     };
 
-    handleTopics = key => {
+    handleTopics = (x) => {
         console.log(this.props);
         this.props.history.push('/categories/topics/');
-        store.dispatch({type: actions.USER_ID, payload:{key}});
-
+        store.dispatch({type: actions.USER_ID, userId: x.obj });
+        store.dispatch({type: actions.ROLE, Role: x.role });
     };
 
     render() {
@@ -55,24 +64,14 @@ class Categories extends Component {
                 title: 'Developer Role',
                 dataIndex: 'role',
                 key: 'role',
-                width: '15%',
-                render: (text, record) => <a onClick={() => this.handleTopics(record.obj)}>{text}</a>
+                width: '25%',
+                render: (text, record) => <a onClick={() => this.handleTopics(record)}>{text}</a>
             },
             {
                 title: 'Description',
                 dataIndex: 'desc',
                 key: 'desc',
-                width: '65%',
-            },
-            {
-                title: 'Action',
-                key: 'action',
-                width: '20%',
-                render: (text, record) =>
-                    <span>
-                        <Button type="primary" className="topics-btn-size"><a onClick={() => this.showModal(record.key)}> Edit </a></Button>
-                        <Button type="danger" className="topics-btn-size"> Delete </Button>
-                    </span>
+                width: '75%',
             },
         ];
 
@@ -82,17 +81,27 @@ class Categories extends Component {
         return (
             <div>
                 <BrowserRouter>
-                    <h2> Categories </h2>
+                    <h2 className="margin"> Categories </h2>
+                    {/*<Sider theme="light">*/}
 
-                { Categories &&
-                <Table columns={columns} dataSource={
-                    Categories.map(this.category)
-                } bordered
-                       name={(key) => ({
-                           onClick: () => this.showModal(key)
-                       })}
-                />
-                }
+
+                        { Categories &&
+                        <Table columns={columns} dataSource={
+                            Categories.map(this.category)
+                        } bordered
+                        />
+                        }
+
+
+                        {/*{ Categories &&*/}
+                        {/*<Menu onClick={this.handleClick} defaultOpenKeys={['category']} mode="inline" className="sider-height">*/}
+                        {/*    <SubMenu key="category" title={ <span> Category </span> }>*/}
+                        {/*        {Categories.map(this.menuCategory)}*/}
+                        {/*    </SubMenu>*/}
+                        {/*</Menu>*/}
+                        {/*}*/}
+
+                    {/*</Sider>*/}
 
                 <Modal
                     title="Ratings & Feedback"
