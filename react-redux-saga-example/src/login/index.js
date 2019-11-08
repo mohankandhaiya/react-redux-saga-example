@@ -1,6 +1,6 @@
 import React from 'react'
 import { Form, Icon, Input, Button, Checkbox, Divider } from 'antd';
-import {BrowserRouter, Route, Link, Redirect } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import axios from 'axios'
 import 'antd/dist/antd.css'
 import { connect } from 'react-redux'
@@ -100,16 +100,18 @@ class Login extends React.Component {
                         <Form.Item>
                             {getFieldDecorator('remember', {
                                 valuePropName: 'checked',
-                                initialValue: true,
+                                initialValue: false,
                             })
                             (<Checkbox>Remember me</Checkbox>)}
-                            <a className="login-form-forgot" href="">
-                                Forgot password
-                            </a>
-                            <Button type="primary" htmlType="submit" className="btn-size"> Login </Button>
+                            <a className="login-form-forgot sm-margin-bottom" href=""> Forgot password </a>
+                            {getFieldDecorator('remember', {
+                                valuePropName: 'checked',
+                                initialValue: false,
+                            })
+                            (<Checkbox> I have read the <a>Terms and Conditions</a> </Checkbox>)}
+                            <Button type="primary" htmlType="submit" className="btn-size margin-top"> Login </Button>
                             <Divider orientation="center">OR</Divider>
                             <p className="center size"><a onClick={this.routeHandler}>Signup</a></p>
-                            <p className="italics">By clicking Log in you agree to our terms and conditions</p>
                         </Form.Item>
                     </Form>
                 </BrowserRouter>

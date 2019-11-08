@@ -27,6 +27,8 @@
 
 @import '~antd/dist/antd.css';
 
+@primary-color: #1890ff;
+
 .menuBar{
   padding: 0 20px;
   border-bottom: solid 1px #e8e8e8;
